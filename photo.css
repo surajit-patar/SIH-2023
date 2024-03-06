@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "montserrat";
+    color: #fff;
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.37);
+}
+
+body {
+    background-image: url("cctv.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-color: #f0f0f0;
+}
+
+#nav {
+    height: 140px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 200px;
+    /* gap: 50px; */
+    position: fixed;
+    z-index: 99;
+}
+
+#nav img {
+    height: 75px;
+}
+
+#nav h4,a{
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all ease 0.6s;
+    scale:  0.9;
+    cursor: pointer;
+}
+#nav h4:hover{
+    /* color: #000; */
+    scale: 1.1;
+    transition: all ease 0.6s;
+}
+#nav a:hover{
+    scale: 1.1;
+    transition: all ease 0.6s;
+}
+
+#nav #log {
+    background-color: #494999;
+    padding: 12px;
+    border-radius: 25px;
+}
+
+.dashboard {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.logo {
+    margin: 25px;
+}
+
+.logo p {
+    text-align: center;
+    color: #fff;
+}
+
+.logo button {
+    background-color: #4caf50;
+    /* Green color */
+    color: #fff;
+    /* Text color */
+    padding: 10px 20px;
+    /* Adjust padding as needed */
+    border: none;
+    /* Remove default border */
+    border-radius: 10px;
+    /* Adjust border radius as needed */
+    cursor: pointer;
+    margin: 12px 25px;
+}
+
+.btn a {
+    text-decoration: none;
+}
+
+.logo button:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+}
+
+.logo img {
+    width: 130px;
+    /* max-width: 100px; */
+    height: auto;
+}
+
+.camera-info {
+    cursor: pointer;
+}
+
+.camera-info:hover {
+    background-color: #dcdcdc;
+}

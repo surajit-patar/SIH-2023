@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONITORING SYSTEM | MONITOR DASHBOARD</title>
+    <link rel="stylesheet" href="photo.css">
+</head>
+<body>
+    <div id="nav">
+        <img src="logo.jpeg" alt="navimage">
+        <a href="../WEB.html" target="_blank">Home</a>
+        <h4>Ministry of Railways</h4>
+        <!-- <a href="index.html" target="_blank">Enquirey</a> -->
+        <h4>Swachh Bharat</h4>
+        <h4>Help</h4>
+        <h4 id="log">Log-Out</h4>
+    </div>
+    <!-- <img src="/Dev/cctv.jpg" alt="xx"> -->
+    <div class="dashboard">
+        <div class="logo">
+            <img src="c.png" alt="Logo">
+            <p>Camera 1</p>
+            <button class="btn">
+                <a href="/index.html" target="_blank">Click</a>
+            </button>
+            
+        </div>
+        <div class="logo">
+            <img src="c.png" alt="Logo">
+            <p>Camera 2</p>
+            <button class="btn" onclick="noCamera()"><a href="#" >Click</a></button>
+        </div>
+        <div class="logo">
+            <img src="c.png" alt="Logo">
+            <p>Camera 3</p>
+            <button class="btn" onclick="noCamera()"><a href="#" >Click</a></button>
+        </div>
+        <div class="logo">
+            <img src="c.png" alt="Logo">
+            <p>Camera 4</p>
+            <button class="btn" onclick="noCamera()"><a href="#" >Click</a></button>
+        </div>
+
+        <!-- <div class="camera-info" onclick="openNewPage()">
+            <p>Total Cameras: <span id="cameraCount">10</span></p>
+        </div> -->
+    </div>
+
+    <script>
+function openNewPage() {
+    window.location.href = "file:///C:/Users/USER/Documents/DEEP/MOTRACKER/index.html";
+}
+
+        function noCamera() {
+            alert("No camera found!");
+        }
+    </script>
+</body>
+</html>
