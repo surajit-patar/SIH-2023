@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KPI Data Table</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'montserrat';
+    color: #fff;
+}
+body,html{
+    height: 100%;
+    width: 100%;
+    /* background-color: rgba(0, 0, 0, 0.37); */
+}
+#nav{
+    height: 140px;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 150px;
+    /* gap: 50px; */
+    /* position: fixed; */
+    z-index: 99;
+}
+#nav img{
+    height: 75px;
+}
+#nav h4,a{
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all ease 1s;
+}
+#nav a:hover{
+    cursor: pointer;
+    color: grey;
+    transition: all ease 1s;
+    scale: 0.8;
+}
+#nav h4:hover{
+    cursor: pointer;
+    color: grey;
+    transition: all ease 1s;
+    scale: 0.8;
+}
+#nav #log{
+    background-color: black;
+    color: white;
+    padding: 12px;
+    border-radius: 25px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    color: green;
+}
+
+th {
+    background-color: #a5a0a0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+
+tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+#image-container{
+    padding: 50px;
+}
+.img-cont{
+    margin: 20px 20px 0px 0px;
+    margin-left: 47px;
+    /* top: -50; */
+    color: black;
+    /* position: relative; */
+    font-size: 25px;
+}
+#table-container{
+    padding: 50px;
+}
+.table-cont{
+    margin: 20px 20px 0px 0px;
+    margin-left: 47px;
+    /* top: -50; */
+    font-size: 25px;
+    color: black;
+    position: relative;
+}
+
+    </style>
+</head>
+<body>
+        <!-- nav bar -->
+        <div id="nav">
+            <img src="./logo.jpg" alt="navimage">
+            <a href="web.html">Home</a>
+            <h4>Ministry of Railways</h4>
+            <!-- <a href="index.html" target="_blank">Enquirey</a> -->
+            <h4>Swachh Bharat</h4>
+            <h4>Help</h4>
+            <h4 id="log">Log-Out</h4>
+            <!-- <h4>Sign-up</h4> -->
+        </div>
+
+        <!-- Container for the image -->
+        <h1 class="img-cont">IMAGE LOADING........</h1>
+        <div id="image-container"></div>
+
+        <h1 class="table-cont">TABLE LOADING......</h1>
+        <i class="fa fa-spinner" aria-hidden="true"></i>
+    <div id="table-container"></div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <script>
+
+d3.csv("kpi.csv").then(function(data) {
+
+
+       function updateImage() {
+            var img = new Image();
+            img.src = 'output.jpg?' + new Date().getTime(); 
+            img.alt = 'Image';
+            img.style.width = '100%'; 
+            img.style.height = 'auto'; 
+
+            var container = document.getElementById('image-container');
+            container.innerHTML = ''; // Clear previous image
+            container.appendChild(img);
+        }
+
+     updateImage(); // Initial call to display the image immediately
+
+
+    //table
+    var table = d3.select("#table-container").append("table");
+    var thead = table.append("thead");
+    var tbody = table.append("tbody");
+
+    // Append the header row
+    thead.append("tr")
+        .selectAll("th")
+        .data(Object.keys(data[0]))
+        .enter()
+        .append("th")
+        .text(function(column) { return column; });
+
+    // Create a row for each object in the data
+    var rows = tbody.selectAll("tr")
+        .data(data)
+        .enter()
+        .append("tr");
+
+    
+    var cells = rows.selectAll("td")
+        .data(function(row) {
+            return Object.keys(row).map(function(column) {
+                return {column: column, value: row[column]};
+            });
+        })
+        .enter()
+        .append("td")
+        .text(function(d) { return d.value; });
+
+    //alert
+    rows.each(function(d) {
+        if (+d["Abnormal Behaviors"] > 5) {
+            d3.select(this).style("background-color", "red");
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
